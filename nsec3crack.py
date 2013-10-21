@@ -57,9 +57,9 @@ if __name__=="__main__":
                 iterations = int(iterations)
                 hashstr= b32hdecode(hashstr)
                 if (domain, salt, iterations) in search:
-                    search[domain, salt, iterations].update((hash1,hash2))
+                    search[domain, salt, iterations].add(hashstr)
                 else:
-                    search[domain, salt, iterations] = set((hash1,hash2))
+                    search[domain, salt, iterations] = set([hashstr])
 
         for line in fileinput.input(args):
             word = line.strip()
